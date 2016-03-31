@@ -2,10 +2,10 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.Writer;
 
-public class Print {
+class Print {
     static private String strip = "+-----------------------------------------------------------------------------------------------+";
 
-    public static void printToConsole(long[] arrayList, long[] linkedList, long[] treeSet, long[] hashSet) {
+    static void printToConsole(long[] arrayList, long[] linkedList, long[] treeSet, long[] hashSet) {
         System.out.println(strip);
         Print.printHead();
         System.out.println(strip);
@@ -17,7 +17,7 @@ public class Print {
 
     }
 
-    public static void printToFile(long[] arrayList, long[] linkedList, long[] treeSet, long[] hashSet) {
+    static void printToFile(long[] arrayList, long[] linkedList, long[] treeSet, long[] hashSet) {
 
         try (Writer writer = new BufferedWriter(new FileWriter("result.txt", true))) {
 

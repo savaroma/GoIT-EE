@@ -3,29 +3,29 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
 
-class LinkedListMeasurements extends MainFirstEEmodule {
+class LinkedListMeasurements {
 
-    private long[][] measurementsLinkedList = new long[7][MainFirstEEmodule.NUMBER_OF_TESTS];
-    private long[] resultTimersLinkedList = new long[7];
+    private long[][] measurementsLinkedList = new long[MainFirstEEmodule.COUNT_LIST_TEST_METHODS][MainFirstEEmodule.NUMBER_OF_TESTS];
+    private long[] resultTimersLinkedList = new long[MainFirstEEmodule.COUNT_LIST_TEST_METHODS];
 
     private LinkedList<Integer> linkedList = new LinkedList<>();
 
-    void Initialisation(int size) {
+    public void initialisation(int size) {
 
         for (int i = 0; i < size; i++) {
             linkedList.add(i);
         }
 
-        MeasurementsLinkedList();
+        measureLinkedList();
 
-        MainFirstEEmodule.temp = CalculateLinkedListTimers();
+        MainFirstEEmodule.temp = calculateLinkedListTimers();
     }
 
-    private long[] CalculateLinkedListTimers() {
+    private long[] calculateLinkedListTimers() {
         long res = measurementsLinkedList[0][0];
 
-        for (int j = 0; j < measurementsLinkedList.length; j++) {    //7
-            for (int i = 1; i < MainFirstEEmodule.NUMBER_OF_TESTS; i++) {         //100
+        for (int j = 0; j < measurementsLinkedList.length; j++) {
+            for (int i = 1; i < MainFirstEEmodule.NUMBER_OF_TESTS; i++) {
 
                 res += measurementsLinkedList[j][i];
             }
@@ -38,7 +38,7 @@ class LinkedListMeasurements extends MainFirstEEmodule {
         return resultTimersLinkedList;
     }
 
-    private void MeasurementsLinkedList() {
+    private void measureLinkedList() {
         Random randomNumber = new Random();
         for (int i = 0; i < MainFirstEEmodule.NUMBER_OF_TESTS; i++) {
 

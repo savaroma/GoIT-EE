@@ -1,8 +1,13 @@
 public class MainFirstEEmodule {
+    static final int COUNT_LIST_TEST_METHODS = 7;
+    static final int COUNT_SET_TEST_METHODS = 4;
     static final int NUMBER_OF_TESTS = 10;
+
     private static final int NUM10K = 10000;
     private static final int NUM100K = 100000;
     private static final int NUM1000K = 1000000;
+
+
     static long[] temp = new long[7];
 
     public static void main(String[] args) {
@@ -16,22 +21,22 @@ public class MainFirstEEmodule {
         TreeSetMeasurements treeSetMeasurements = new TreeSetMeasurements();
         HashSetMeasurements hashSetMeasurements = new HashSetMeasurements();
 
-        linkedListMeasurements.Initialisation(NUM10K);
+        linkedListMeasurements.initialisation(NUM10K);
         long[] resTemp10k = linkedListMeasurements.getResultTimersLinkedList();
-        linkedListMeasurements.Initialisation(NUM100K);
+        linkedListMeasurements.initialisation(NUM100K);
         long[] resTemp100k = linkedListMeasurements.getResultTimersLinkedList();
-        linkedListMeasurements.Initialisation(NUM1000K);
+        linkedListMeasurements.initialisation(NUM1000K);
         long[] resTemp1000k = linkedListMeasurements.getResultTimersLinkedList();
 
         for (int i = 0; i < resLinked.length; i++) {
             resLinked[i] = (resTemp10k[i] + resTemp100k[i] + resTemp1000k[i]) / 3;
         }
 
-        arrayListMeasurements.Initialisation(NUM10K);
+        arrayListMeasurements.initialisation(NUM10K);
         resTemp10k = arrayListMeasurements.getResultTimersArrayList();
-        arrayListMeasurements.Initialisation(NUM100K);
+        arrayListMeasurements.initialisation(NUM100K);
         resTemp100k = arrayListMeasurements.getResultTimersArrayList();
-        arrayListMeasurements.Initialisation(NUM1000K);
+        arrayListMeasurements.initialisation(NUM1000K);
         resTemp1000k = arrayListMeasurements.getResultTimersArrayList();
 
         for (int i = 0; i < resArray.length; i++) {
@@ -47,11 +52,11 @@ public class MainFirstEEmodule {
         for (int i = 0; i < resTree.length; i++) {
             resTree[i] = (resTemp10k[i] + resTemp100k[i] + resTemp1000k[i]) / 3;
         }
-        hashSetMeasurements.Initialization(NUM10K);
+        hashSetMeasurements.initialization(NUM10K);
         resTemp10k = hashSetMeasurements.getResultTimersHashSet();
-        hashSetMeasurements.Initialization(NUM100K);
+        hashSetMeasurements.initialization(NUM100K);
         resTemp100k = hashSetMeasurements.getResultTimersHashSet();
-        hashSetMeasurements.Initialization(NUM1000K);
+        hashSetMeasurements.initialization(NUM1000K);
         resTemp1000k = hashSetMeasurements.getResultTimersHashSet();
 
         for (int i = 0; i < resHash.length; i++) {

@@ -2,25 +2,25 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 import java.util.Random;
 
-class ArrayListMeasurements extends MainFirstEEmodule {
+class ArrayListMeasurements {
 
-    private long[][] measurementsArrayList = new long[7][MainFirstEEmodule.NUMBER_OF_TESTS];
-    private long[] resultTimersArrayList = new long[7];
+    private long[][] measurementsArrayList = new long[MainFirstEEmodule.COUNT_LIST_TEST_METHODS][MainFirstEEmodule.NUMBER_OF_TESTS];
+    private long[] resultTimersArrayList = new long[MainFirstEEmodule.COUNT_LIST_TEST_METHODS];
 
     private ArrayList<Integer> arrayList = new ArrayList<>();
 
-    void Initialisation(int size) {
+    public void initialisation(int size) {
 
         for (int i = 0; i < size; i++) {
             arrayList.add(i);
         }
 
-        MeasurementsArrayList();
+        measureArrayList();
 
-        MainFirstEEmodule.temp = CalculateArrayListTimers();
+        MainFirstEEmodule.temp = calculateArrayListTimers();
     }
 
-    private long[] CalculateArrayListTimers() {
+    private long[] calculateArrayListTimers() {
         long res = measurementsArrayList[0][0];
 
         for (int j = 0; j < measurementsArrayList.length; j++) {
@@ -33,11 +33,11 @@ class ArrayListMeasurements extends MainFirstEEmodule {
         return resultTimersArrayList;
     }
 
-    long[] getResultTimersArrayList() {
+    public long[] getResultTimersArrayList() {
         return resultTimersArrayList;
     }
 
-    private void MeasurementsArrayList() {
+    private void measureArrayList() {
         Random randomNumber = new Random();
         for (int i = 0; i < MainFirstEEmodule.NUMBER_OF_TESTS; i++) {
 

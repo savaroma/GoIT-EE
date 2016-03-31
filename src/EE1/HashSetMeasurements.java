@@ -2,24 +2,24 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class HashSetMeasurements extends MainFirstEEmodule {
+public class HashSetMeasurements {
 
-    private long[][] measurementsHashSet = new long[4][MainFirstEEmodule.NUMBER_OF_TESTS];
-    private long[] resultTimersHashSet = new long[4];
+    private long[][] measurementsHashSet = new long[MainFirstEEmodule.COUNT_SET_TEST_METHODS][MainFirstEEmodule.NUMBER_OF_TESTS];
+    private long[] resultTimersHashSet = new long[MainFirstEEmodule.COUNT_SET_TEST_METHODS];
 
     private final Set<Integer> hashSet = new HashSet<>();
 
-    void Initialization(int size) {
+    public void initialization(int size) {
         for (int i = 0; i < size; i++) {
             hashSet.add(i);
         }
 
-        MeasurementsHashSet();
+        measureHashSet();
 
-        MainFirstEEmodule.temp = CalculateHashSetTimers();
+        MainFirstEEmodule.temp = calculateHashSetTimers();
     }
 
-    private long[] CalculateHashSetTimers() {
+    private long[] calculateHashSetTimers() {
         long res = measurementsHashSet[0][0];
 
         for (int j = 0; j < measurementsHashSet.length; j++) {
@@ -32,11 +32,11 @@ public class HashSetMeasurements extends MainFirstEEmodule {
         return resultTimersHashSet;
     }
 
-    long[] getResultTimersHashSet() {
+    public long[] getResultTimersHashSet() {
         return resultTimersHashSet;
     }
 
-    private void MeasurementsHashSet() {
+    private void measureHashSet() {
         Random randomNumber = new Random();
         for (int i = 0; i < MainFirstEEmodule.NUMBER_OF_TESTS; i++) {
 
@@ -56,7 +56,6 @@ public class HashSetMeasurements extends MainFirstEEmodule {
 
             hashSet.clear();
             long timerPopulate = System.nanoTime();
-            Set<Integer> newHashSet = new HashSet<>(hashSet);
             measurementsHashSet[3][i] = System.nanoTime() - timerPopulate;
         }
     }
