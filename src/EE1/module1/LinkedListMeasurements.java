@@ -7,7 +7,7 @@ import java.util.Random;
 
 class LinkedListMeasurements extends MainFirstEEmodule {
 
-    private long[][] measurementsLinkedList = new long[7][NUMBER_OF_TESTS];
+    private long[][] measurementsLinkedList = new long[7][MainFirstEEmodule.NUMBER_OF_TESTS];
     private long[] resultTimersLinkedList = new long[7];
 
     private LinkedList<Integer> linkedList = new LinkedList<>();
@@ -20,18 +20,18 @@ class LinkedListMeasurements extends MainFirstEEmodule {
 
         MeasurementsLinkedList();
 
-        temp = CalculateLinkedListTimers();
+        MainFirstEEmodule.temp = CalculateLinkedListTimers();
     }
 
     private long[] CalculateLinkedListTimers() {
         long res = measurementsLinkedList[0][0];
 
         for (int j = 0; j < measurementsLinkedList.length; j++) {    //7
-            for (int i = 1; i < NUMBER_OF_TESTS; i++) {         //100
+            for (int i = 1; i < MainFirstEEmodule.NUMBER_OF_TESTS; i++) {         //100
 
                 res += measurementsLinkedList[j][i];
             }
-            resultTimersLinkedList[j] = res / NUMBER_OF_TESTS;
+            resultTimersLinkedList[j] = res / MainFirstEEmodule.NUMBER_OF_TESTS;
         }
         return resultTimersLinkedList;
     }
@@ -42,7 +42,7 @@ class LinkedListMeasurements extends MainFirstEEmodule {
 
     private void MeasurementsLinkedList() {
         Random randomNumber = new Random();
-        for (int i = 0; i < NUMBER_OF_TESTS; i++) {
+        for (int i = 0; i < MainFirstEEmodule.NUMBER_OF_TESTS; i++) {
 
             int rnd = randomNumber.nextInt(linkedList.size() + 1);
 

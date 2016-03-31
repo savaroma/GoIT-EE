@@ -1,13 +1,12 @@
 package module1;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
 
 class ArrayListMeasurements extends MainFirstEEmodule {
 
-    private long[][] measurementsArrayList = new long[7][NUMBER_OF_TESTS];
+    private long[][] measurementsArrayList = new long[7][MainFirstEEmodule.NUMBER_OF_TESTS];
     private long[] resultTimersArrayList = new long[7];
 
     private ArrayList<Integer> arrayList = new ArrayList<>();
@@ -20,18 +19,18 @@ class ArrayListMeasurements extends MainFirstEEmodule {
 
         MeasurementsArrayList();
 
-        temp = CalculateArrayListTimers();
+        MainFirstEEmodule.temp = CalculateArrayListTimers();
     }
 
     private long[] CalculateArrayListTimers() {
         long res = measurementsArrayList[0][0];
 
         for (int j = 0; j < measurementsArrayList.length; j++) {
-            for (int i = 1; i < NUMBER_OF_TESTS - 1; i++) {
+            for (int i = 1; i < MainFirstEEmodule.NUMBER_OF_TESTS - 1; i++) {
 
                 res += measurementsArrayList[j][i];
             }
-            resultTimersArrayList[j] = res / NUMBER_OF_TESTS;
+            resultTimersArrayList[j] = res / MainFirstEEmodule.NUMBER_OF_TESTS;
         }
         return resultTimersArrayList;
     }
@@ -42,7 +41,7 @@ class ArrayListMeasurements extends MainFirstEEmodule {
 
     private void MeasurementsArrayList() {
         Random randomNumber = new Random();
-        for (int i = 0; i < NUMBER_OF_TESTS; i++) {
+        for (int i = 0; i < MainFirstEEmodule.NUMBER_OF_TESTS; i++) {
 
             int rnd = randomNumber.nextInt(arrayList.size() + 1);
 
@@ -63,11 +62,10 @@ class ArrayListMeasurements extends MainFirstEEmodule {
             measurementsArrayList[3][i] = System.nanoTime() - timerContains;
 
             long timerPopulate = System.nanoTime();
-            List<Integer> newArrayList = new ArrayList<Integer>(arrayList);
             measurementsArrayList[4][i] = System.nanoTime() - timerPopulate;
 
             long timerIterAdd = System.nanoTime();
-            ListIterator iterator = arrayList.listIterator();
+            ListIterator<Integer> iterator = arrayList.listIterator();
             iterator.next();
             iterator.add(rnd);
 
