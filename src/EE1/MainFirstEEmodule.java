@@ -1,5 +1,3 @@
-package module1;
-
 public class MainFirstEEmodule {
     static final int NUMBER_OF_TESTS = 10;
     private static final int NUM10K = 10000;
