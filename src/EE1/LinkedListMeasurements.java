@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
 
-class LinkedListMeasurements {
+public class LinkedListMeasurements {
 
     private long[][] measurementsLinkedList = new long[MainFirstEEmodule.COUNT_LIST_TEST_METHODS][MainFirstEEmodule.NUMBER_OF_TESTS];
     private long[] resultTimersLinkedList = new long[MainFirstEEmodule.COUNT_LIST_TEST_METHODS];

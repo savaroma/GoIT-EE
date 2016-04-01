@@ -16,7 +16,7 @@ public class TreeSetMeasurements {
 
         measureTreeSet();
 
-        long[] temp = calculateTreeSetTimers();
+        MainFirstEEmodule.temp = calculateTreeSetTimers();
     }
 
 

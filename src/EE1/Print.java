@@ -2,7 +2,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.Writer;
 
-class Print {
+public class Print {
     static private String strip = "+-----------------------------------------------------------------------------------------------+";
 
     static void printToConsole(long[] arrayList, long[] linkedList, long[] treeSet, long[] hashSet) {

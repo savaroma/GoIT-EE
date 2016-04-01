@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 import java.util.Random;
 
-class ArrayListMeasurements {
+public class ArrayListMeasurements {
 
     private long[][] measurementsArrayList = new long[MainFirstEEmodule.COUNT_LIST_TEST_METHODS][MainFirstEEmodule.NUMBER_OF_TESTS];
     private long[] resultTimersArrayList = new long[MainFirstEEmodule.COUNT_LIST_TEST_METHODS];
