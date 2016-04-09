@@ -9,7 +9,8 @@ public class Print {
         System.out.println(strip);
         Print.printHead();
         System.out.println(strip);
-        Print.printArrayList("ArrayList", arrayList);
+        Print.printArrayList("ArrayList", arrayList); //если делаешь все статическим, то нет смысла вызывать приватный
+        //метод этого же класса через имя класса. Он и без имени класса будет виден.
         Print.printLinkedList("LinkedList", linkedList);
         Print.printSet("TreeSet", treeSet);
         Print.printSet("HashSet", hashSet);

@@ -1,5 +1,5 @@
 public class MainFirstEEmodule {
-    static final int COUNT_LIST_TEST_METHODS = 7;
+    static final int COUNT_LIST_TEST_METHODS = 7;//если это константы, то они должны быть паблик
     static final int COUNT_SET_TEST_METHODS = 4;
     static final int NUMBER_OF_TESTS = 10;
 
@@ -7,8 +7,10 @@ public class MainFirstEEmodule {
     private static final int NUM100K = 100000;
     private static final int NUM1000K = 1000000;
 
+    //пока выводится одна таблица - не понятно для какого количества элементов. Подпиши таблицу, плиз.
+    //Результаты тоже не совсем понятны (1, 2, 4) - что это?
 
-    static long[] temp = new long[7];
+    static long[] temp = new long[7]; //пошли меджик намберс
 
     public static void main(String[] args) {
         long[] resArray = new long[7];
