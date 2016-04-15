@@ -1,3 +1,5 @@
+package EE1_Collections;
+
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;

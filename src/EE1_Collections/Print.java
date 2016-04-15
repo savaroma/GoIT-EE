@@ -1,3 +1,5 @@
+package EE1_Collections;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.Writer;
@@ -7,13 +9,15 @@ public class Print {
 
     static void printToConsole(long[] arrayList, long[] linkedList, long[] treeSet, long[] hashSet) {
         System.out.println(strip);
-        Print.printHead();
+        printHead();
+
         System.out.println(strip);
-        Print.printArrayList("ArrayList", arrayList); //если делаешь все статическим, то нет смысла вызывать приватный
-        //метод этого же класса через имя класса. Он и без имени класса будет виден.
-        Print.printLinkedList("LinkedList", linkedList);
-        Print.printSet("TreeSet", treeSet);
-        Print.printSet("HashSet", hashSet);
+        printArrayList("ArrayList", arrayList);
+        printLinkedList("LinkedList", linkedList);
+
+        printSet("TreeSet", treeSet);
+        printSet("HashSet", hashSet);
+
         System.out.println(strip);
 
     }
@@ -21,7 +25,7 @@ public class Print {
     static void printToFile(long[] arrayList, long[] linkedList, long[] treeSet, long[] hashSet) {
 
         try (Writer writer = new BufferedWriter(new FileWriter("result.txt", true))) {
-
+            writer.flush();
             writer.write(strip + "\n");
             writer.write("|\t\t\t\t" + "add" + "\t\t" + "get" + "\t\t\t" + "remove" + "\t\t" +
                     "contains" + "\t" + "populate" + "\t" + "iter.add" + "\t" + "iter.remove" + " | \n");
