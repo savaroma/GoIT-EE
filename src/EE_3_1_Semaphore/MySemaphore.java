@@ -1,10 +1,10 @@
 package EE_3_1_Semaphore;
 
-import java.util.Objects;
-
 public class MySemaphore implements Semaphore {
     private volatile int permitsAvailable;
     private final Object lock;
+    private String threadName = Thread.currentThread().getName();
+
 
     public MySemaphore(int permitsAvailable) {
         this.permitsAvailable = permitsAvailable;
@@ -15,18 +15,18 @@ public class MySemaphore implements Semaphore {
     public void acquire() throws InterruptedException {
         synchronized (lock) {
             while (true) {
-                System.out.println(Thread.currentThread().getName() + " checking available acquire.");
+                System.out.println(threadName + " checking available acquire.");
 
                 int ACQUIRE = 1;
                 if (tryAcquire(ACQUIRE)) {
-                    System.out.println(Thread.currentThread().getName() + " was acquired.");
+                    System.out.println(threadName + " was acquired.");
                     permitsAvailable--;
                     Thread.sleep(3000);
                     break;
                 } else {
-                    System.out.println(Thread.currentThread().getName() + "is waiting.");
+                    System.out.println(threadName + "is waiting.");
                     Thread.currentThread().wait(); ///
-                    System.out.println(Thread.currentThread().getName() + "woke up");
+                    System.out.println(threadName + "woke up");
                     Thread.sleep(1000);
                 }
             }
@@ -37,16 +37,16 @@ public class MySemaphore implements Semaphore {
     public void acquire(int permits) throws InterruptedException {
         synchronized (lock) {
             while (true) {
-                System.out.println(Thread.currentThread().getName() + " checking available acquire.");
+                System.out.println(threadName + " checking available acquire.");
                 if (tryAcquire(permits)) {
-                    System.out.println(Thread.currentThread().getName() + " was acquired.");
+                    System.out.println(threadName + " was acquired.");
                     permitsAvailable -= permits;
                     Thread.sleep(5000);
                     break;
                 } else {
-                    System.out.println(Thread.currentThread().getName() + " is waiting.");
+                    System.out.println(threadName + " is waiting.");
                     lock.wait();
-                    System.out.println(Thread.currentThread().getName() + " woke up.");
+                    System.out.println(threadName + " woke up.");
                     Thread.sleep(1000);
                 }
             }
@@ -63,7 +63,7 @@ public class MySemaphore implements Semaphore {
             if (permitsAvailable + 1 > 0) {
                 permitsAvailable++;
                 lock.notify();
-                System.out.println("Threads was notified by " + Thread.currentThread().getName());
+                System.out.println("Threads was notified by " + threadName);
             } else {
                 System.out.println("Threads did not notify, available permits: " + permitsAvailable);
             }
@@ -76,7 +76,7 @@ public class MySemaphore implements Semaphore {
             if (permitsAvailable + permits > 0) {
                 permitsAvailable += permits;
                 lock.notifyAll();
-                System.out.println("All threads was notified by " + Thread.currentThread().getName());
+                System.out.println("All threads was notified by " + threadName);
             } else {
                 System.out.println("Threads did not notify, available permits: " + permitsAvailable);
             }
