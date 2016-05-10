@@ -1,9 +1,8 @@
 package EE1_Collections;
 
 public class MainFirstEEmodule {
-    static final int COUNT_LIST_TEST_METHODS = 7;
-    static final int COUNT_SET_TEST_METHODS = 4;
-    static final int NUMBER_OF_TESTS = 10;
+    private static final int COUNT_LIST_TEST_METHODS = 7;
+    private static final int COUNT_SET_TEST_METHODS = 4;
 
     private static final int NUM10K = 10000;
     private static final int NUM100K = 100000;
@@ -13,12 +12,10 @@ public class MainFirstEEmodule {
     static long[] temp = new long[7];
 
     public static void main(String[] args) {
-        //если ты вверху задал константы на эти цифры, почему используешь теперь цифры, а не константы?
-        //но эти константы использовать в других классах не стоит.
-        long[] resArray = new long[7];
-        long[] resLinked = new long[7];
-        long[] resTree = new long[4];
-        long[] resHash = new long[4];
+        long[] resArray = new long[COUNT_LIST_TEST_METHODS];
+        long[] resLinked = new long[COUNT_LIST_TEST_METHODS];
+        long[] resTree = new long[COUNT_SET_TEST_METHODS];
+        long[] resHash = new long[COUNT_SET_TEST_METHODS];
 
         LinkedListMeasurements linkedListMeasurements = new LinkedListMeasurements();
         ArrayListMeasurements arrayListMeasurements = new ArrayListMeasurements();

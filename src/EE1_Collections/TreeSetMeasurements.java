@@ -4,14 +4,17 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class TreeSetMeasurements {
+class TreeSetMeasurements {
 
-    private long[][] measurementsTreeSet = new long[MainFirstEEmodule.COUNT_SET_TEST_METHODS][MainFirstEEmodule.NUMBER_OF_TESTS];
-    private long[] resultTimersTreeSet = new long[MainFirstEEmodule.COUNT_SET_TEST_METHODS];
+    private static final int COUNT_SET_TEST_METHODS = 4;
+    private static final int NUMBER_OF_TESTS = 10;
+
+    private long[][] measurementsTreeSet = new long[COUNT_SET_TEST_METHODS][NUMBER_OF_TESTS];
+    private long[] resultTimersTreeSet = new long[COUNT_SET_TEST_METHODS];
 
     private final Set<Integer> treeSet = new TreeSet<>();
 
-    public void Initialization(int size) {
+    void Initialization(int size) {
         for (int i = 0; i < size; i++) {
             treeSet.add(i);
         }
@@ -26,22 +29,22 @@ public class TreeSetMeasurements {
         long res = measurementsTreeSet[0][0];
 
         for (int j = 0; j < measurementsTreeSet.length; j++) {
-            for (int i = 1; i < MainFirstEEmodule.NUMBER_OF_TESTS - 1; i++) {
+            for (int i = 1; i < NUMBER_OF_TESTS - 1; i++) {
 
                 res += measurementsTreeSet[j][i];
             }
-            resultTimersTreeSet[j] = res / MainFirstEEmodule.NUMBER_OF_TESTS;
+            resultTimersTreeSet[j] = res / NUMBER_OF_TESTS;
         }
         return resultTimersTreeSet;
     }
 
-    public long[] getResultTimersTreeSet() {
+    long[] getResultTimersTreeSet() {
         return resultTimersTreeSet;
     }
 
     private void measureTreeSet() {
         Random randomNumber = new Random();
-        for (int i = 0; i < MainFirstEEmodule.NUMBER_OF_TESTS; i++) {
+        for (int i = 0; i < NUMBER_OF_TESTS; i++) {
 
             int rnd = randomNumber.nextInt(treeSet.size() + 1);
 
