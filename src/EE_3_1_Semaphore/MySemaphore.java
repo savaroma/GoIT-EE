@@ -1,12 +1,13 @@
 package EE_3_1_Semaphore;
 
-public class MySemaphore implements Semaphore {
+class MySemaphore implements Semaphore {
     private volatile int permitsAvailable;
+    private final int ACQUIRE = 1;
     private final Object lock;
     private String threadName = Thread.currentThread().getName();
 
 
-    public MySemaphore(int permitsAvailable) {
+    MySemaphore(int permitsAvailable) {
         this.permitsAvailable = permitsAvailable;
         this.lock = new Object();
     }
@@ -17,16 +18,16 @@ public class MySemaphore implements Semaphore {
             while (true) {
                 System.out.println(threadName + " checking available acquire.");
 
-                int ACQUIRE = 1;
+
                 if (tryAcquire(ACQUIRE)) {
                     System.out.println(threadName + " was acquired.");
                     permitsAvailable--;
-                    Thread.sleep(3000);
+                    Thread.sleep(5000);
                     break;
                 } else {
-                    System.out.println(threadName + "is waiting.");
+                    System.out.println(threadName + " is waiting.");
                     Thread.currentThread().wait(); ///
-                    System.out.println(threadName + "woke up");
+                    System.out.println(threadName + " woke up");
                     Thread.sleep(1000);
                 }
             }
