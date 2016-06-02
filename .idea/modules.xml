@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/GoIT-EE.iml" filepath="$PROJECT_DIR$/.idea/GoIT-EE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven-collections/maven-collection.iml" filepath="$PROJECT_DIR$/maven-collections/maven-collection.iml" />
     </modules>
   </component>
 </project>
