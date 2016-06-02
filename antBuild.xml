@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="GoIT-EE" default="dist" basedir=".">
+
+    <property name="junit.path" location="C:\Program Files (x86)\JetBrains\IntelliJ IDEA 2016.1\lib\junit-4.12.jar"/>
+
+    <property name="build" location="buildAnt"/>
+    <property name="build_jar" location="${build}/jar"/>
+    <property name="build_compiled" location="${build}/classes"/>
+
+    <property name="ee1" value="EE1_Collections"/>
+    <property name="ee2" value="EE2_Generics"/>
+    <property name="ee3_1" value="EE_3_1_Semaphore"/>
+    <property name="ee3_2" value="EE_3_2_Phaser"/>
+
+    <property name="ee1_main" value="${ee1}.MainFirstEEmodule" />
+    <property name="ee2_main" value="${ee2}.NumbersDivisibleBy2"/>
+    <property name="ee3-1_main" value="${ee3_1}.Runner"/>
+    <property name="ee3-2_main" value="${ee3_2}.Runner"/>
+
+    <property name="jar_ee1" location="${build_jar}/${ee1_main}.jar"/>
+    <property name="jar_ee2" location="${build_jar}/${ee2_main}.jar"/>
+    <property name="jar_ee3-1" location="${build_jar}/${ee3-1_main}.jar"/>
+    <property name="jar_ee3-2" location="${build_jar}/${ee3-2_main}.jar"/>
+
+    <property name="src_ee1" location="src/EE1_Collections"/>
+    <property name="src_ee2" location="src/EE2_Generics"/>
+    <property name="src_ee3-1" location="src/EE_3_1_Semaphore"/>
+    <property name="src_ee3-2" location="src/EE_3_2_Phaser"/>
+    <property name="lib.dir"     value="lib"/>
+
+    <property name="test.src.ee3-1" location="test/EE_3_1_Semaphore"/>
+    <property name="test.src.ee3-2" location="test/EE_3_2_Phaser"/>
+
+    <target name="clean" description="Remove the output directories">
+        <delete dir="${build_jar}"/>
+        <delete dir="${build_compiled}"/>
+        <delete dir="${build}"/>
+    </target>
+
+    <target name="init" depends="clean" description="Create the output directories.">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${build_jar}"/>
+        <mkdir dir="${build_compiled}"/>
+
+    </target>
+
+    <target name="compile_ee1" description="Compile the source">
+        <javac srcdir="${src_ee1}" destdir="${build_compiled}"/>
+    </target>
+
+    <target name="compile_ee2" description="Compile the source">
+        <javac srcdir="${src_ee2}" destdir="${build_compiled}"/>
+    </target>
+
+    <target name="compile_ee3-1" description="Compile the source">
+        <javac srcdir="${src_ee3-1}" destdir="${build_compiled}"/>
+    </target>
+
+    <target name="compile_ee3-2" description="Compile the source">
+        <javac srcdir="${src_ee3-2}" destdir="${build_compiled}"/>
+    </target>
+
+    <target name="jar_ee1" depends="compile_ee1" description="Create the ee1.jar file">
+
+        <tstamp>
+            <format property="build.tstamp" pattern="yyyy.MM.dd HH:mm"/>
+        </tstamp>
+
+        <jar destfile="${build_jar}/${ee1_main}.jar"
+             basedir="${build_compiled}">
+            <manifest>
+                <attribute name="Main-Class" value="${ee1_main}"/>
+                <attribute name="Build-By" value="${user.name}/${os.name} "/>
+                <attribute name="Build-Date" value="${build.tstamp}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="jar_ee2" depends="compile_ee2" description="Create the ee2.jar file">
+
+        <tstamp>
+            <format property="build.tstamp" pattern="yyyy.MM.dd HH:mm"/>
+        </tstamp>
+        <jar destfile="${build_jar}/${ee2_main}.jar"
+             basedir="${build_compiled}">
+            <manifest>
+                <attribute name="Main-Class" value="${ee2_main}"/>
+                <attribute name="Build-By" value="${user.name}/${os.name} "/>
+                <attribute name="Build-Date" value="${build.tstamp}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="jar_ee3_1" depends="compile_ee3-1" description="Create the ee3-1.jar file">
+
+        <tstamp>
+            <format property="build.tstamp" pattern="yyyy.MM.dd HH:mm"/>
+        </tstamp>
+
+        <jar destfile="${build_jar}/${ee3-1_main}.jar"
+             basedir="${build_compiled}">
+            <manifest>
+                <attribute name="Main-Class" value="${ee3-1_main}"/>
+                <attribute name="Build-By" value="${user.name}/${os.name} "/>
+                <attribute name="Build-Date" value="${build.tstamp}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="jar_ee3_2" depends="compile_ee3-2" description="Create the ee3-2.jar file">
+
+        <tstamp>
+            <format property="build.tstamp" pattern="yyyy.MM.dd HH:mm"/>
+        </tstamp>
+
+        <jar destfile="${build_jar}/${ee3-2_main}.jar"
+             basedir="${build_compiled}">
+            <manifest>
+                <attribute name="Main-Class" value="${ee3-1_main}"/>
+                <attribute name="Build-By" value="${user.name}/${os.name} "/>
+                <attribute name="Build-Date" value="${build.tstamp}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="junit_ee3-1">
+        <junit printsummary="yes" haltonfailure="yes" fork="true">
+            <classpath>
+                <path location="${junit.path}"/>
+                <path location="${jar_ee3-1}"/>
+            </classpath>
+
+            <batchtest fork="yes">
+                <fileset dir="${test.src.ee3-1}" includes="*Test.java"/>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="junit_ee3-2">
+        <junit printsummary="yes">
+            <classpath>
+                <path location="${junit.path}"/>
+                <path location="${jar_ee3-2}"/>
+            </classpath>
+
+            <batchtest fork="yes">
+                <fileset dir="${test.src.ee3-2}" includes="*Test.java"/>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="dist" depends="clean, init,
+    compile_ee1, compile_ee2, compile_ee3-1, compile_ee3-2,
+    jar_ee1, jar_ee2, jar_ee3_1, jar_ee3_2">
+    </target>
+</project>
