@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/maven-collections/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/buildAnt" />
+      <excludeFolder url="file://$MODULE_DIR$/maven-collection/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/out" />
     </content>
     <orderEntry type="inheritedJdk" />
